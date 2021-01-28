@@ -1,9 +1,11 @@
 
 <template>
     <h1>Listagem</h1>
-    <a href="/entrevista/">home</a>
+        
+    <a href="" @click.prevent="home">home</a>
     <br>
-    <a href="/cadastro/">Cadastrar novo usuário</a>
+    <a href="" @click.prevent="cadastro">cadastro</a>
+  
     <br>
     <br>
     <p>Procurar pelo nome</p>
@@ -33,9 +35,17 @@
 </template>
 
 <script>
+import routes from '../routes'
 export default {
   components: {
+   
+  },
 
+  props: {
+    href: {
+      type:String,
+      required: true
+    }
   },
 
   data(){
@@ -62,6 +72,15 @@ export default {
       })
       this.filterUsuarios = pessoas
       return this.lista_pessoas = pessoas
+    },
+
+    home () {
+      this.$root.currentRoute = '/entrevista/'
+      window.history.pushState(null, routes['/entrevista/'], '/entrevista/')
+    },
+    cadastro () {
+      this.$root.currentRoute = '/entrevista/cadastro/'
+      window.history.pushState(null, routes['/entrevista/cadastro/'], '/entrevista/cadastro/')
     }
   },
   computed: {

@@ -1,7 +1,8 @@
 
 <template>
-  <main-layout>
-    <a href="/entrevista/">home</a>
+
+    <a href="" @click.prevent="home">home</a>
+    <br>
     <br>
     <p>Cadastrar</p>
     
@@ -18,23 +19,22 @@
       <div v-if="sucess">
         
         <p class="sucess">Salvou com sucesso</p>
-        <a href="/listagem/">Listagem de usuários</a>
+        <a href="" @click.prevent="listagem">Listagem de usuários</a>
         
       </div>
       <div v-if="error">
         <p class="error">Erro ao salvar {{ mensage_erro }}</p>
       </div>
 
-  </main-layout>
+
 
 </template>
 
 <script>
-import MainLayout from '../layouts/Main.vue'
-
+import routes from '../routes'
 export default {
   components: {
-MainLayout
+
 
   },
 
@@ -85,7 +85,15 @@ MainLayout
               this.sucess = false
               this.mensage_erro = "alguns campos ficaram em branco"
             }
-      }
+      },
+    home () {
+      this.$root.currentRoute = '/entrevista/'
+      window.history.pushState(null, routes['/entrevista/'], '/entrevista/')
+    },
+    listagem () {
+      this.$root.currentRoute = '/entrevista/listagem/'
+      window.history.pushState(null, routes['/entrevista/listagem/'], '/entrevista/listagem/')
+    }
   }
 
 }
