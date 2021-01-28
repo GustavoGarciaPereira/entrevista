@@ -104,7 +104,7 @@ https://gustavogarciapereira.github.io/entrevista/
 
 ## agora vamo para o deploy do django-resr-framework
 
-já o deploy do django vamos fazer no heroku, dosto muito do serverço deles
+já o deploy do django vamos fazer no heroku, gosto muito do serverço deles
 
 como já fizemos o clone do repositório não é necessario fazer de novo
 
@@ -116,6 +116,7 @@ entre na pasta onde esta o projeto
 
 para inicializar o nosso projeto
 ```bash
+    virtualenv -p python3 venv
     source venv/bin/activate
     pip install -r requirements.txt
     python manage.py migrate
@@ -126,7 +127,7 @@ primeiro vamos no heroku e criamos uma nova app
 https://dashboard.heroku.com/apps
 
 na nossa maquina 
-criamo do Procfile com o sequite conteudo
+criamo do Procfile com o sequite conteúdo
 
 ```bash
 web: gunicorn cadastro_entrevista.wsgi --log-file -
@@ -158,4 +159,4 @@ https://cadastros-usuario.herokuapp.com/usuario/lista-usario/
 
 
 ## vale lembrar que como estou usando um plano gratis do heroku
-## no primeiro acesso depomos mais para vir a resposta
+## no primeiro acesso demoramos mais para vir a resposta
