@@ -1,18 +1,17 @@
 <template>
   <ul>
-    <li><v-link href="/">Home</v-link></li>
-    <li><v-link href="/cadastro">Cadastro</v-link></li>
-    <li><v-link href="/listagem">Listagem</v-link></li>
+    <li><a href="/cadastro/">Cadastro</a></li>
+    <li><a href="/listagem/">Listagem</a></li>
   </ul>
 
   <slot></slot>
 </template>
 
 <script>
-import VLink from '../components/VLink.vue'
+
 export default {
   components: {
-    VLink
+
   }
 }
 </script>

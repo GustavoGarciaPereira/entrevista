@@ -1,5 +1,5 @@
 export default {
-    '/': 'Home',
-    '/cadastro': 'Cadastro',
-    '/listagem':'Listagem'
+    '/entrevista/': 'Home',
+    '/cadastro/': 'Cadastro',
+    '/listagem/':'Listagem'
   }

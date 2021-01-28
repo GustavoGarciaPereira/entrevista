@@ -1,13 +1,15 @@
 
 <template>
-    <p>Liatagem</p>
-    <a href="/cadastro">Cadastrar novo usuário</a>
-    Search <input name="query" v-model="searchQuery" />
-  
-      <!-- em interpolações de texto 
-      <p>{{ $filters.capitalize("accountBalance") }}</p>
+    <h1>Listagem</h1>
+    <a href="/entrevista/">home</a>
+    <br>
+    <a href="/cadastro/">Cadastrar novo usuário</a>
+    <br>
+    <br>
+    <p>Procurar pelo nome</p>
+    <br>
+    <input name="query" v-model="searchQuery" />
 
--->
         <table>
         <thead>
           <tr>
@@ -17,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr  v-for="item in filteredHeroes" :key="item.id">
+          <tr  v-for="item in capitalize" :key="item.id">
             <td v-for="key in columns" :key="key">
                 {{ item[key]}}
             </td>
@@ -41,7 +43,7 @@ export default {
       lista_pessoas:[],
       columns:['created','nome','idade','telefone'],
       searchQuery: "",
-      filteredHeroes:[]
+      filterUsuarios:[]
     }
 
   },
@@ -54,27 +56,28 @@ export default {
   methods:{
 
     async listar(){
-        const pessoas = await this.axios.get('http://127.0.0.1:8000/usuario/lista-usario/').then((response) => {
+        const pessoas = await this.axios.get('https://cadastros-usuario.herokuapp.com/usuario/lista-usario/').then((response) => {
           //console.log("fu",response.data)
         return response.data
       })
-      this.filteredHeroes = pessoas
+      this.filterUsuarios = pessoas
       return this.lista_pessoas = pessoas
     }
   },
-  filters: {
-      capitalize(value) {
-        console.log(">>",value)
-        if (!value) return ''
-        value = value.toString()
-        return value.charAt(0).toUpperCase() + value.slice(1)
+  computed: {
+      capitalize() {
+        let produtosEletronico = this.lista_pessoas.filter((value)=>{
+            if (value.nome.trim() === this.searchQuery.trim())
+              return value;
+        });
+
+        return produtosEletronico.length === 0 ? this.lista_pessoas : produtosEletronico
+
       }
     }
 
 
 }
-
-
 
 </script>
 <style scoped>
