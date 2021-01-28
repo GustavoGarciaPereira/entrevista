@@ -1,5 +1,5 @@
 # entrevista
-front vue e bask python com django
+front vue e back python com django
 
 
 
