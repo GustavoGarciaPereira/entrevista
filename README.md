@@ -1,8 +1,6 @@
 # entrevista
 front vue e back python com django
 
-
-
 bem-vindo ao tutorial para fazer o deploy desta aplicação.
 
 Antes de começamos algumas informações importantes.
@@ -29,7 +27,7 @@ cd cadastro-entrevista/
 ```
 
 ```bash
-yarn start
+yarn
 ```
 
 ```bash
@@ -115,8 +113,15 @@ entre na pasta onde esta o projeto
 ```
 
 para inicializar o nosso projeto
+
+primeiro criamos uma virtualenv
+
+no meu caso com o comando
 ```bash
     virtualenv -p python3 venv
+```
+
+```bash
     source venv/bin/activate
     pip install -r requirements.txt
     python manage.py migrate
